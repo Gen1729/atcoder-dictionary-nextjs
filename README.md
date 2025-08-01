@@ -1,15 +1,3 @@
-# Atcoder問題検索サイト
-
-タグづけして特定のジャンルの問題を探す
-
-## 使用技術
-
-Next.js(app router)
-
-PostgresSQL(Prisma ORM)
-
-## 以下公式Document
-
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
