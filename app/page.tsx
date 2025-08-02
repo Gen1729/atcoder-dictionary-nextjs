@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react';
+import Problems from './ui/problems';
 
 export default function Home() {
 
@@ -55,12 +56,6 @@ export default function Home() {
         <div className="p-5">
           <button
             className="bg-blue-500 text-white px-4 py-2 rounded mb-4"
-            onClick={() => {
-              // 検索ボタンが押されたときの処理
-              alert('検索ボタンが押されました');
-              // ここでlevelsやtagsの値を利用できます
-              console.log(levels, tags);
-            }}
           >
             検索
           </button>
@@ -147,7 +142,7 @@ export default function Home() {
         </div>
       </div>
       <div className="flex-1 bg-green-200">
-        右側のコンテンツ
+        <Problems />
       </div>
     </div>
   );
