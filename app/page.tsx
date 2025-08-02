@@ -4,7 +4,6 @@ import { useState } from 'react';
 import Problems from './ui/problems';
 
 export default function Home() {
-
   // Difficultyのinput値
   const [minDiff, setMinDiff] = useState('0');
   const [maxDiff, setMaxDiff] = useState('3600');
@@ -142,7 +141,7 @@ export default function Home() {
         </div>
       </div>
       <div className="flex-1 bg-green-200">
-        <Problems />
+        <Problems minDiff={Number(minDiff)} maxDiff={Number(maxDiff)} problemLevels={levels} tags={tags}/>
       </div>
     </div>
   );
