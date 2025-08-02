@@ -10,24 +10,31 @@ export default function Home() {
 
   // 問題ランクのチェックボックス状態
   const [levels, setLevels] = useState({
-    A: false,
-    B: false,
-    C: false,
-    D: false,
-    E: false,
-    F: false,
-    G: false,
+    A: true,
+    B: true,
+    C: true,
+    D: true,
+    E: true,
+    F: true,
+    G: true,
   });
 
   // タグのチェックボックス状態
   const [tags, setTags] = useState({
-    binarySearch: false,
-    dp: false,
-    DFS: false,
-    BFS: false,
-    Dijkstra: false,
-    integer: false,
-    bit2: false,
+    binarySearch: true,
+    dp: true,
+    DFS: true,
+    BFS: true,
+    Dijkstra: true,
+    integer: true,
+    bit2: true,
+  });
+
+  const [filter, setFilter] = useState({
+    minDiff: 0,
+    maxDiff: 3600,
+    levels: { ...levels },
+    tags: { ...tags }
   });
 
   //難易度ハンドラ
@@ -48,6 +55,15 @@ export default function Home() {
     setTags({ ...tags, [tag]: !tags[tag as keyof typeof tags] });
   };
 
+  const onSearch = () => {
+    setFilter({
+      minDiff: Number(minDiff),
+      maxDiff: Number(maxDiff),
+      levels: { ...levels },
+      tags: { ...tags },
+    });
+  };
+
   return (
     <div className="flex h-screen">
       <div className="w-[400px] bg-blue-200">
@@ -55,6 +71,7 @@ export default function Home() {
         <div className="p-5">
           <button
             className="bg-blue-500 text-white px-4 py-2 rounded mb-4"
+            onClick={onSearch}
           >
             検索
           </button>
@@ -135,13 +152,18 @@ export default function Home() {
             </label>
             <label className="pr-[10px]">
               <input type="checkbox" className="mr-2 scale-150" checked={tags.bit2} onChange={() => handleTagChange('bit2')} />
-              2bit
+              bit2
             </label>
           </div>
         </div>
       </div>
       <div className="flex-1 bg-green-200">
-        <Problems minDiff={Number(minDiff)} maxDiff={Number(maxDiff)} problemLevels={levels} tags={tags}/>
+        <Problems
+          minDiff={filter.minDiff}
+          maxDiff={filter.maxDiff}
+          problemLevels={filter.levels}
+          tags={filter.tags}
+        />
       </div>
     </div>
   );
