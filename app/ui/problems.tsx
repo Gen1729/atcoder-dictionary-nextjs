@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react';
+import { Loading } from './skeleton';
 
 type Problem = {
   id: number;
@@ -26,8 +27,10 @@ export default function Problems({
   tags: Tag;
 }) {
   const [problems, setProblems] = useState<Problem[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
+    setLoading(true);
     const selectedLevels = Object.entries(problemLevels)
       .filter(([, value]) => value)
       .map(([key]) => key);
@@ -43,9 +46,16 @@ export default function Problems({
 
     fetch(`/api/problems?${params.toString()}`)
       .then(res => res.json())
-      .then(data => setProblems(data));
+      .then(data => {
+        setProblems(data);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
   }, [minDiff, maxDiff, problemLevels, tags]);
 
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <div>
       {problems.map(problem => (
