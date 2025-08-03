@@ -38,17 +38,12 @@ export default function Problems({
     let selectedLevels = Object.entries(problemLevels)
       .filter(([, value]) => value)
       .map(([key]) => key);
-    let selectedTags = Object.entries(tags)
+    const selectedTags = Object.entries(tags)
       .filter(([, value]) => value)
       .map(([key]) => key);
 
     if(selectedLevels.length == 0){
       selectedLevels = Object.entries(problemLevels)
-        .map(([key]) => key);
-    }
-
-    if(selectedTags.length == 0){
-      selectedTags = Object.entries(tags)
         .map(([key]) => key);
     }
 
@@ -72,11 +67,26 @@ export default function Problems({
   if (loading) {
     return <Loading />;
   }
+  // difficulty値に応じて色を返す関数
+  const getDifficultyColor = (difficulty: number) => {
+    if (difficulty < 400) return 'text-zinc-500';
+    if (difficulty < 800) return 'text-yellow-800';
+    if (difficulty < 1200) return 'text-green-800';
+    if (difficulty < 1600) return 'text-cyan-500';
+    if (difficulty < 2000) return 'text-blue-700';
+    if (difficulty < 2400) return 'text-yellow-500';
+    if (difficulty < 2800) return 'text-orange-500';
+    return 'text-red-600';
+  };
+
   return (
     <div>
       {problems.map(problem => (
-        <div key={problem.id}>
-          <a href={problem.url} target="_blank" rel="noopener noreferrer">{problem.title} | Difficulty:{problem.difficulty} | Contest:{problem.contestId} | {problem.tags} </a>
+        <div key={problem.id} className="mb-[5px]">
+          ・
+          <a href={problem.url} target="_blank" rel="noopener noreferrer" className={getDifficultyColor(problem.difficulty)}>
+            {problem.contestType}{problem.contestId} | {problem.title} | Difficulty:{problem.difficulty} | {problem.tags}
+          </a>
         </div>
       ))}
     </div>

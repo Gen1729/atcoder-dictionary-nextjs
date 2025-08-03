@@ -13,14 +13,28 @@ export async function GET(request: Request) {
   const levels = url.searchParams.getAll('levels');
   const tags = url.searchParams.getAll('tags');
 
-  const problems = await prisma.problem.findMany({
-    where: {
-      contestId: { gte: minContestId, lte: maxContestId },
-      difficulty: { gte: minDiff, lte: maxDiff },
-      level: { in: levels.length > 0 ? levels : undefined },
-      OR: tags.length > 0 ? tags.map(tag => ({ tags: { contains: tag } })) : undefined,
-    },
-  });
+  if(tags.length == 0){
+    const problems = await prisma.problem.findMany({
+      where: {
+        contestId: { gte: minContestId, lte: maxContestId },
+        difficulty: { gte: minDiff, lte: maxDiff },
+        level: { in: levels.length > 0 ? levels : undefined },
+      },
+    });
 
-  return NextResponse.json(problems);
+    return NextResponse.json(problems);
+  }else{
+    const problems = await prisma.problem.findMany({
+      where: {
+        contestId: { gte: minContestId, lte: maxContestId },
+        difficulty: { gte: minDiff, lte: maxDiff },
+        level: { in: levels.length > 0 ? levels : undefined },
+        OR: tags.length > 0 ? tags.map(tag => ({ tags: { contains: tag } })) : undefined,
+      },
+    });
+
+    return NextResponse.json(problems);
+  }
+
+  
 }

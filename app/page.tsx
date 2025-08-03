@@ -79,7 +79,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex h-screen">
+    <div className="flex min-h-screen h-full">
       <div className="w-[400px] bg-blue-200">
         <h1 className="text-[50px] leading-none p-5">Atcoder Dictionary</h1>
         <div className="p-5">
@@ -109,7 +109,7 @@ export default function Home() {
               />
             </span>
           </div>
-          <div className="text-[20px]">
+          <div className="text-[20px] mb-[30px]">
             ContestId:
             <span>
               <input
@@ -159,7 +159,7 @@ export default function Home() {
               G
             </label>
           </div>
-          <div className="text-[20px] py-[30px]">
+          <div className="text-[20px] py-[20px]">
             <label className="pr-[10px]">
               <input type="checkbox" className="mr-2 scale-150" checked={tags.binarySearch} onChange={() => handleTagChange('binarySearch')} />
               binary search
@@ -191,7 +191,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="flex-1 bg-green-200">
+      <div className="flex-1 bg-green-100 font-bold pl-[20px] pt-[15px]">
         <Problems
           minDiff={filter.minDiff}
           maxDiff={filter.maxDiff}
