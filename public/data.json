@@ -1,0 +1,674 @@
+[
+    {
+        "title": "A - Not Found",
+        "url": "https://atcoder.jp/contests/abc404/tasks/abc404_a",
+        "tags": "",
+        "contestId": 404,
+        "difficulty": 0,
+        "level": "A"
+    },
+    {
+        "title": "B - Grid Rotation",
+        "url": "https://atcoder.jp/contests/abc404/tasks/abc404_b",
+        "tags": "",
+        "contestId": 404,
+        "difficulty": 83,
+        "level": "B"
+    },
+    {
+        "title": "C - Cycle Graph?",
+        "url": "https://atcoder.jp/contests/abc404/tasks/abc404_c",
+        "tags": "",
+        "contestId": 404,
+        "difficulty": 370,
+        "level": "C"
+    },
+    {
+        "title": "D - Goin' to the Zoo",
+        "url": "https://atcoder.jp/contests/abc404/tasks/abc404_d",
+        "tags": "",
+        "contestId": 404,
+        "difficulty": 803,
+        "level": "D"
+    },
+    {
+        "title": "E - Bowls and Beans",
+        "url": "https://atcoder.jp/contests/abc404/tasks/abc404_e",
+        "tags": "",
+        "contestId": 404,
+        "difficulty": 1286,
+        "level": "E"
+    },
+    {
+        "title": "F - Lost and Pound",
+        "url": "https://atcoder.jp/contests/abc404/tasks/abc404_f",
+        "tags": "",
+        "contestId": 404,
+        "difficulty": 2162,
+        "level": "F"
+    },
+    {
+        "title": "G - Specified Range Sums",
+        "url": "https://atcoder.jp/contests/abc404/tasks/abc404_g",
+        "tags": "",
+        "contestId": 404,
+        "difficulty": 1894,
+        "level": "G"
+    },
+    {
+        "title": "A - Is it rated?",
+        "url": "https://atcoder.jp/contests/abc405/tasks/abc405_a",
+        "tags": "",
+        "contestId": 405,
+        "difficulty": 0,
+        "level": "A"
+    },
+    {
+        "title": "B - Not All",
+        "url": "https://atcoder.jp/contests/abc405/tasks/abc405_b",
+        "tags": "",
+        "contestId": 405,
+        "difficulty": 0,
+        "level": "B"
+    },
+    {
+        "title": "C - Sum of Product",
+        "url": "https://atcoder.jp/contests/abc405/tasks/abc405_c",
+        "tags": "",
+        "contestId": 405,
+        "difficulty": 0,
+        "level": "C"
+    },
+    {
+        "title": "D - Escape Route",
+        "url": "https://atcoder.jp/contests/abc405/tasks/abc405_d",
+        "tags": "",
+        "contestId": 405,
+        "difficulty": 471,
+        "level": "D"
+    },
+    {
+        "title": "E - Fruit Lineup",
+        "url": "https://atcoder.jp/contests/abc405/tasks/abc405_e",
+        "tags": "",
+        "contestId": 405,
+        "difficulty": 1259,
+        "level": "E"
+    },
+    {
+        "title": "F - Chord Crossing",
+        "url": "https://atcoder.jp/contests/abc405/tasks/abc405_f",
+        "tags": "",
+        "contestId": 405,
+        "difficulty": 1588,
+        "level": "F"
+    },
+    {
+        "title": "G - Range Shuffle Query",
+        "url": "https://atcoder.jp/contests/abc405/tasks/abc405_g",
+        "tags": "",
+        "contestId": 405,
+        "difficulty": 2354,
+        "level": "G"
+    },
+    {
+        "title": "A - Not Acceptable",
+        "url": "https://atcoder.jp/contests/abc406/tasks/abc406_a",
+        "tags": "",
+        "contestId": 406,
+        "difficulty": 0,
+        "level": "A"
+    },
+    {
+        "title": "B - Product Calculator",
+        "url": "https://atcoder.jp/contests/abc406/tasks/abc406_b",
+        "tags": "",
+        "contestId": 406,
+        "difficulty": 75,
+        "level": "B"
+    },
+    {
+        "title": "C - ~",
+        "url": "https://atcoder.jp/contests/abc406/tasks/abc406_c",
+        "tags": "",
+        "contestId": 406,
+        "difficulty": 862,
+        "level": "C"
+    },
+    {
+        "title": "D - Garbage Removal",
+        "url": "https://atcoder.jp/contests/abc406/tasks/abc406_d",
+        "tags": "",
+        "contestId": 406,
+        "difficulty": 694,
+        "level": "D"
+    },
+    {
+        "title": "E - Popcount Sum 3",
+        "url": "https://atcoder.jp/contests/abc406/tasks/abc406_e",
+        "tags": "",
+        "contestId": 406,
+        "difficulty": 1365,
+        "level": "E"
+    },
+    {
+        "title": "F - Compare Tree Weights",
+        "url": "https://atcoder.jp/contests/abc406/tasks/abc406_f",
+        "tags": "",
+        "contestId": 406,
+        "difficulty": 1470,
+        "level": "F"
+    },
+    {
+        "title": "G - Travelling Salesman Problem",
+        "url": "https://atcoder.jp/contests/abc406/tasks/abc406_g",
+        "tags": "",
+        "contestId": 406,
+        "difficulty": 3197,
+        "level": "G"
+    },
+    {
+        "title": "A - Approximation",
+        "url": "https://atcoder.jp/contests/abc407/tasks/abc407_a",
+        "tags": "",
+        "contestId": 407,
+        "difficulty": 0,
+        "level": "A"
+    },
+    {
+        "title": "B - P(X or Y)",
+        "url": "https://atcoder.jp/contests/abc407/tasks/abc407_b",
+        "tags": "",
+        "contestId": 407,
+        "difficulty": 0,
+        "level": "B"
+    },
+    {
+        "title": "C - Security 2",
+        "url": "https://atcoder.jp/contests/abc407/tasks/abc407_c",
+        "tags": "",
+        "contestId": 407,
+        "difficulty": 278,
+        "level": "C"
+    },
+    {
+        "title": "D - Domino Covering XOR",
+        "url": "https://atcoder.jp/contests/abc407/tasks/abc407_d",
+        "tags": "",
+        "contestId": 407,
+        "difficulty": 930,
+        "level": "D"
+    },
+    {
+        "title": "E - Most Valuable Parentheses",
+        "url": "https://atcoder.jp/contests/abc407/tasks/abc407_e",
+        "tags": "",
+        "contestId": 407,
+        "difficulty": 1531,
+        "level": "E"
+    },
+    {
+        "title": "F - Sums of Sliding Window Maximum",
+        "url": "https://atcoder.jp/contests/abc407/tasks/abc407_f",
+        "tags": "",
+        "contestId": 407,
+        "difficulty": 1740,
+        "level": "F"
+    },
+    {
+        "title": "G - Domino Covering SUM",
+        "url": "https://atcoder.jp/contests/abc407/tasks/abc407_g",
+        "tags": "",
+        "contestId": 407,
+        "difficulty": 2190,
+        "level": "G"
+    },
+    {
+        "title": "A - Timeout",
+        "url": "https://atcoder.jp/contests/abc408/tasks/abc408_a",
+        "tags": "",
+        "contestId": 408,
+        "difficulty": 0,
+        "level": "A"
+    },
+    {
+        "title": "B - Compression",
+        "url": "https://atcoder.jp/contests/abc408/tasks/abc408_b",
+        "tags": "",
+        "contestId": 408,
+        "difficulty": 0,
+        "level": "B"
+    },
+    {
+        "title": "C - Not All Covered",
+        "url": "https://atcoder.jp/contests/abc408/tasks/abc408_c",
+        "tags": "",
+        "contestId": 408,
+        "difficulty": 166,
+        "level": "C"
+    },
+    {
+        "title": "D - Flip to Gather",
+        "url": "https://atcoder.jp/contests/abc408/tasks/abc408_d",
+        "tags": "",
+        "contestId": 408,
+        "difficulty": 950,
+        "level": "D"
+    },
+    {
+        "title": "E - Minimum OR Path",
+        "url": "https://atcoder.jp/contests/abc408/tasks/abc408_e",
+        "tags": "",
+        "contestId": 408,
+        "difficulty": 1222,
+        "level": "E"
+    },
+    {
+        "title": "F - Athletic",
+        "url": "https://atcoder.jp/contests/abc408/tasks/abc408_f",
+        "tags": "",
+        "contestId": 408,
+        "difficulty": 1472,
+        "level": "F"
+    },
+    {
+        "title": "G - A/B < p/q < C/D",
+        "url": "https://atcoder.jp/contests/abc408/tasks/abc408_g",
+        "tags": "",
+        "contestId": 408,
+        "difficulty": 2167,
+        "level": "G"
+    },
+    {
+        "title": "A - Conflict",
+        "url": "https://atcoder.jp/contests/abc409/tasks/abc409_a",
+        "tags": "",
+        "contestId": 409,
+        "difficulty": 0,
+        "level": "A"
+    },
+    {
+        "title": "B - Citation",
+        "url": "https://atcoder.jp/contests/abc409/tasks/abc409_b",
+        "tags": "",
+        "contestId": 409,
+        "difficulty": 0,
+        "level": "B"
+    },
+    {
+        "title": "C - Equilateral Triangle",
+        "url": "https://atcoder.jp/contests/abc409/tasks/abc409_c",
+        "tags": "",
+        "contestId": 409,
+        "difficulty": 421,
+        "level": "C"
+    },
+    {
+        "title": "D - String Rotation",
+        "url": "https://atcoder.jp/contests/abc409/tasks/abc409_d",
+        "tags": "",
+        "contestId": 409,
+        "difficulty": 772,
+        "level": "D"
+    },
+    {
+        "title": "E - Pair Annihilation",
+        "url": "https://atcoder.jp/contests/abc409/tasks/abc409_e",
+        "tags": "",
+        "contestId": 409,
+        "difficulty": 973,
+        "level": "E"
+    },
+    {
+        "title": "F - Connecting Points",
+        "url": "https://atcoder.jp/contests/abc409/tasks/abc409_f",
+        "tags": "",
+        "contestId": 409,
+        "difficulty": 1580,
+        "level": "F"
+    },
+    {
+        "title": "G - Accumulation of Wealth",
+        "url": "https://atcoder.jp/contests/abc409/tasks/abc409_g",
+        "tags": "",
+        "contestId": 409,
+        "difficulty": 2616,
+        "level": "G"
+    },
+    {
+        "title": "A - G1",
+        "url": "https://atcoder.jp/contests/abc410/tasks/abc410_a",
+        "tags": "",
+        "contestId": 410,
+        "difficulty": 0,
+        "level": "A"
+    },
+    {
+        "title": "B - Reverse Proxy",
+        "url": "https://atcoder.jp/contests/abc410/tasks/abc410_b",
+        "tags": "",
+        "contestId": 410,
+        "difficulty": 0,
+        "level": "B"
+    },
+    {
+        "title": "C - Rotatable Array",
+        "url": "https://atcoder.jp/contests/abc410/tasks/abc410_c",
+        "tags": "",
+        "contestId": 410,
+        "difficulty": 178,
+        "level": "C"
+    },
+    {
+        "title": "D - XOR Shortest Walk",
+        "url": "https://atcoder.jp/contests/abc410/tasks/abc410_d",
+        "tags": "",
+        "contestId": 410,
+        "difficulty": 1048,
+        "level": "D"
+    },
+    {
+        "title": "E - Battles in a Row",
+        "url": "https://atcoder.jp/contests/abc410/tasks/abc410_e",
+        "tags": "",
+        "contestId": 410,
+        "difficulty": 1077,
+        "level": "E"
+    },
+    {
+        "title": "F - Balanced Rectangles",
+        "url": "https://atcoder.jp/contests/abc410/tasks/abc410_f",
+        "tags": "",
+        "contestId": 410,
+        "difficulty": 1732,
+        "level": "F"
+    },
+    {
+        "title": "G - Longest Chord Chain",
+        "url": "https://atcoder.jp/contests/abc410/tasks/abc410_g",
+        "tags": "",
+        "contestId": 410,
+        "difficulty": 2242,
+        "level": "G"
+    },
+    {
+        "title": "A - Required Length",
+        "url": "https://atcoder.jp/contests/abc411/tasks/abc411_a",
+        "tags": "",
+        "contestId": 411,
+        "difficulty": 0,
+        "level": "A"
+    },
+    {
+        "title": "B - Distance Table",
+        "url": "https://atcoder.jp/contests/abc411/tasks/abc411_b",
+        "tags": "",
+        "contestId": 411,
+        "difficulty": 0,
+        "level": "B"
+    },
+    {
+        "title": "C - Black Intervals",
+        "url": "https://atcoder.jp/contests/abc411/tasks/abc411_c",
+        "tags": "",
+        "contestId": 411,
+        "difficulty": 185,
+        "level": "C"
+    },
+    {
+        "title": "D - Conflict 2",
+        "url": "https://atcoder.jp/contests/abc411/tasks/abc411_d",
+        "tags": "",
+        "contestId": 411,
+        "difficulty": 1018,
+        "level": "D"
+    },
+    {
+        "title": "E - E [max]",
+        "url": "https://atcoder.jp/contests/abc411/tasks/abc411_e",
+        "tags": "",
+        "contestId": 411,
+        "difficulty": 1400,
+        "level": "E"
+    },
+    {
+        "title": "F - Contraction",
+        "url": "https://atcoder.jp/contests/abc411/tasks/abc411_f",
+        "tags": "",
+        "contestId": 411,
+        "difficulty": 1898,
+        "level": "F"
+    },
+    {
+        "title": "G - Count Cycles",
+        "url": "https://atcoder.jp/contests/abc411/tasks/abc411_g",
+        "tags": "",
+        "contestId": 411,
+        "difficulty": 2093,
+        "level": "G"
+    },
+    {
+        "title": "A - Task Failed Successfully",
+        "url": "https://atcoder.jp/contests/abc412/tasks/abc412_a",
+        "tags": "",
+        "contestId": 412,
+        "difficulty": 0,
+        "level": "A"
+    },
+    {
+        "title": "B - Precondition",
+        "url": "https://atcoder.jp/contests/abc412/tasks/abc412_b",
+        "tags": "",
+        "contestId": 412,
+        "difficulty": 0,
+        "level": "B"
+    },
+    {
+        "title": "C - Giant Domino",
+        "url": "https://atcoder.jp/contests/abc412/tasks/abc412_c",
+        "tags": "",
+        "contestId": 412,
+        "difficulty": 607,
+        "level": "C"
+    },
+    {
+        "title": "D - Make 2-Regular Graph",
+        "url": "https://atcoder.jp/contests/abc412/tasks/abc412_d",
+        "tags": "",
+        "contestId": 412,
+        "difficulty": 1186,
+        "level": "D"
+    },
+    {
+        "title": "E - LCM Sequence",
+        "url": "https://atcoder.jp/contests/abc412/tasks/abc412_e",
+        "tags": "",
+        "contestId": 412,
+        "difficulty": 1496,
+        "level": "E"
+    },
+    {
+        "title": "F - Socks 4",
+        "url": "https://atcoder.jp/contests/abc412/tasks/abc412_f",
+        "tags": "",
+        "contestId": 412,
+        "difficulty": 2038,
+        "level": "F"
+    },
+    {
+        "title": "G - Degree Harmony",
+        "url": "https://atcoder.jp/contests/abc412/tasks/abc412_g",
+        "tags": "",
+        "contestId": 412,
+        "difficulty": 3402,
+        "level": "G"
+    },
+    {
+        "title": "A - Content Too Large",
+        "url": "https://atcoder.jp/contests/abc413/tasks/abc413_a",
+        "tags": "",
+        "contestId": 413,
+        "difficulty": 0,
+        "level": "A"
+    },
+    {
+        "title": "B - cat 2",
+        "url": "https://atcoder.jp/contests/abc413/tasks/abc413_b",
+        "tags": "",
+        "contestId": 413,
+        "difficulty": 0,
+        "level": "B"
+    },
+    {
+        "title": "C - Large Queue",
+        "url": "https://atcoder.jp/contests/abc413/tasks/abc413_c",
+        "tags": "",
+        "contestId": 413,
+        "difficulty": 177,
+        "level": "C"
+    },
+    {
+        "title": "D - Make Geometric Sequence",
+        "url": "https://atcoder.jp/contests/abc413/tasks/abc413_d",
+        "tags": "",
+        "contestId": 413,
+        "difficulty": 943,
+        "level": "D"
+    },
+    {
+        "title": "E - Reverse 2^i",
+        "url": "https://atcoder.jp/contests/abc413/tasks/abc413_e",
+        "tags": "",
+        "contestId": 413,
+        "difficulty": 1241,
+        "level": "E"
+    },
+    {
+        "title": "F - No Passage",
+        "url": "https://atcoder.jp/contests/abc413/tasks/abc413_f",
+        "tags": "",
+        "contestId": 413,
+        "difficulty": 1635,
+        "level": "F"
+    },
+    {
+        "title": "G - Big Banned Grid",
+        "url": "https://atcoder.jp/contests/abc413/tasks/abc413_g",
+        "tags": "",
+        "contestId": 413,
+        "difficulty": 1723,
+        "level": "G"
+    },
+    {
+        "title": "A - Streamer Takahashi",
+        "url": "https://atcoder.jp/contests/abc414/tasks/abc414_a",
+        "tags": "",
+        "contestId": 414,
+        "difficulty": 0,
+        "level": "A"
+    },
+    {
+        "title": "B - String Too Long ",
+        "url": "https://atcoder.jp/contests/abc414/tasks/abc414_b",
+        "tags": "",
+        "contestId": 414,
+        "difficulty": 0,
+        "level": "B"
+    },
+    {
+        "title": "C - Palindromic in Both Bases",
+        "url": "https://atcoder.jp/contests/abc414/tasks/abc414_c",
+        "tags": "",
+        "contestId": 414,
+        "difficulty": 709,
+        "level": "C"
+    },
+    {
+        "title": "D - Transmission Mission",
+        "url": "https://atcoder.jp/contests/abc414/tasks/abc414_d",
+        "tags": "",
+        "contestId": 414,
+        "difficulty": 841,
+        "level": "D"
+    },
+    {
+        "title": "E - Count A%B=C",
+        "url": "https://atcoder.jp/contests/abc414/tasks/abc414_e",
+        "tags": "",
+        "contestId": 414,
+        "difficulty": 1296,
+        "level": "E"
+    },
+    {
+        "title": "F - Jump Traveling",
+        "url": "https://atcoder.jp/contests/abc414/tasks/abc414_f",
+        "tags": "",
+        "contestId": 414,
+        "difficulty": 2357,
+        "level": "F"
+    },
+    {
+        "title": "G - AtCoder Express 4",
+        "url": "https://atcoder.jp/contests/abc414/tasks/abc414_g",
+        "tags": "",
+        "contestId": 414,
+        "difficulty": 3020,
+        "level": "G"
+    },
+    {
+        "title": "A - Unsupported Type",
+        "url": "https://atcoder.jp/contests/abc415/tasks/abc415_a",
+        "tags": "",
+        "contestId": 415,
+        "difficulty": 0,
+        "level": "A"
+    },
+    {
+        "title": "B - Pick Two",
+        "url": "https://atcoder.jp/contests/abc415/tasks/abc415_b",
+        "tags": "",
+        "contestId": 415,
+        "difficulty": 0,
+        "level": "B"
+    },
+    {
+        "title": "C - Mixture",
+        "url": "https://atcoder.jp/contests/abc415/tasks/abc415_c",
+        "tags": "",
+        "contestId": 415,
+        "difficulty": 657,
+        "level": "C"
+    },
+    {
+        "title": "D - Get Many Stickers",
+        "url": "https://atcoder.jp/contests/abc415/tasks/abc415_d",
+        "tags": "",
+        "contestId": 415,
+        "difficulty": 846,
+        "level": "D"
+    },
+    {
+        "title": "E - Hungry Takahashi",
+        "url": "https://atcoder.jp/contests/abc415/tasks/abc415_e",
+        "tags": "",
+        "contestId": 415,
+        "difficulty": 1212,
+        "level": "E"
+    },
+    {
+        "title": "F - Max Combo",
+        "url": "https://atcoder.jp/contests/abc415/tasks/abc415_f",
+        "tags": "",
+        "contestId": 415,
+        "difficulty": 1552,
+        "level": "F"
+    },
+    {
+        "title": "G - Get Many Cola",
+        "url": "https://atcoder.jp/contests/abc415/tasks/abc415_g",
+        "tags": "",
+        "contestId": 415,
+        "difficulty": 2180,
+        "level": "G"
+    }
+]

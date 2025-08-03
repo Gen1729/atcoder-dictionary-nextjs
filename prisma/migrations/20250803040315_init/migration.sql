@@ -4,6 +4,7 @@ CREATE TABLE "public"."Problem" (
     "contestType" TEXT NOT NULL,
     "contestId" INTEGER NOT NULL,
     "level" TEXT NOT NULL,
+    "title" TEXT NOT NULL,
     "difficulty" INTEGER NOT NULL,
     "url" TEXT NOT NULL,
     "tags" TEXT NOT NULL,

@@ -7,32 +7,36 @@ export default function Home() {
   // Difficultyのinput値
   const [minDiff, setMinDiff] = useState('0');
   const [maxDiff, setMaxDiff] = useState('3600');
+  const [minContestId, setMinContestId] = useState('300');
+  const [maxContestId, setMaxContestId] = useState('417');
 
   // 問題ランクのチェックボックス状態
   const [levels, setLevels] = useState({
-    A: true,
-    B: true,
-    C: true,
-    D: true,
-    E: true,
-    F: true,
-    G: true,
+    A: false,
+    B: false,
+    C: false,
+    D: false,
+    E: false,
+    F: false,
+    G: false,
   });
 
   // タグのチェックボックス状態
   const [tags, setTags] = useState({
-    binarySearch: true,
-    dp: true,
-    DFS: true,
-    BFS: true,
-    Dijkstra: true,
-    integer: true,
-    bit2: true,
+    binarySearch: false,
+    dp: false,
+    DFS: false,
+    BFS: false,
+    Dijkstra: false,
+    integer: false,
+    bit2: false,
   });
 
   const [filter, setFilter] = useState({
     minDiff: 0,
     maxDiff: 3600,
+    minContestId: 300,
+    maxContestId: 417,
     levels: { ...levels },
     tags: { ...tags }
   });
@@ -44,6 +48,14 @@ export default function Home() {
 
   const handleMaxDiffChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setMaxDiff(e.target.value);
+  }
+
+  const handleMinContestIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setMinContestId(e.target.value);
+  }
+
+  const handleMaxContestIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setMaxContestId(e.target.value);
   }
 
   // チェックボックス変更時のハンドラ
@@ -59,6 +71,8 @@ export default function Home() {
     setFilter({
       minDiff: Number(minDiff),
       maxDiff: Number(maxDiff),
+      minContestId: Number(minContestId),
+      maxContestId: Number(maxContestId),
       levels: { ...levels },
       tags: { ...tags },
     });
@@ -92,6 +106,26 @@ export default function Home() {
                 className="px-[2px] py-[10px] mx-[10px] h-[20px] w-[80px] bg-white border-2 border-black-500"
                 value={maxDiff}
                 onChange={handleMaxDiffChange}
+              />
+            </span>
+          </div>
+          <div className="text-[20px]">
+            ContestId:
+            <span>
+              <input
+                type="number"
+                className="px-[2px] py-[10px] mx-[10px] h-[20px] w-[80px] bg-white border-2 border-black-500"
+                value={minContestId}
+                onChange={handleMinContestIdChange}
+              />
+            </span>
+            ~
+            <span>
+              <input
+                type="number"
+                className="px-[2px] py-[10px] mx-[10px] h-[20px] w-[80px] bg-white border-2 border-black-500"
+                value={maxContestId}
+                onChange={handleMaxContestIdChange}
               />
             </span>
           </div>
@@ -161,6 +195,8 @@ export default function Home() {
         <Problems
           minDiff={filter.minDiff}
           maxDiff={filter.maxDiff}
+          minContestId={filter.minContestId}
+          maxContestId={filter.maxContestId}
           problemLevels={filter.levels}
           tags={filter.tags}
         />

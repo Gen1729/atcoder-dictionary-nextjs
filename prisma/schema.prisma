@@ -16,9 +16,10 @@ datasource db {
 model Problem {
   id            Int      @id @default(autoincrement()) // 主キー・数字
   contestType   String   // 文字列
-  contestId Int      // 数字
-  level       String   // アルファベット
-  difficulty Int
+  contestId     Int      // 数字
+  level         String   // アルファベット
+  title         String
+  difficulty    Int
   url           String   // 文字列
   tags          String   // 文字列（タグ列をカンマ区切り等で管理する場合）
 }

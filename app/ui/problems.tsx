@@ -7,6 +7,7 @@ type Problem = {
   contestType: string;
   contestId: number;
   level: string;
+  title: string;
   difficulty: number;
   url: string;
   tags: string;
@@ -18,29 +19,44 @@ type Tag = Record<string, boolean>;
 export default function Problems({
   minDiff,
   maxDiff,
+  minContestId,
+  maxContestId,
   problemLevels,
   tags,
 }: {
   minDiff: number;
   maxDiff: number;
+  minContestId: number;
+  maxContestId: number;
   problemLevels: Level;
   tags: Tag;
 }) {
   const [problems, setProblems] = useState<Problem[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-
   useEffect(() => {
     setLoading(true);
-    const selectedLevels = Object.entries(problemLevels)
+    let selectedLevels = Object.entries(problemLevels)
       .filter(([, value]) => value)
       .map(([key]) => key);
-    const selectedTags = Object.entries(tags)
+    let selectedTags = Object.entries(tags)
       .filter(([, value]) => value)
       .map(([key]) => key);
+
+    if(selectedLevels.length == 0){
+      selectedLevels = Object.entries(problemLevels)
+        .map(([key]) => key);
+    }
+
+    if(selectedTags.length == 0){
+      selectedTags = Object.entries(tags)
+        .map(([key]) => key);
+    }
 
     const params = new URLSearchParams();
     params.append('minDiff', String(minDiff));
     params.append('maxDiff', String(maxDiff));
+    params.append('minContestId', String(minContestId));
+    params.append('maxContestId', String(maxContestId));
     selectedLevels.forEach(level => params.append('levels', level));
     selectedTags.forEach(tag => params.append('tags', tag));
 
@@ -51,7 +67,7 @@ export default function Problems({
         setLoading(false);
       })
       .catch(() => setLoading(false));
-  }, [minDiff, maxDiff, problemLevels, tags]);
+  }, [minDiff, maxDiff, minContestId, maxContestId, problemLevels, tags]);
 
   if (loading) {
     return <Loading />;
@@ -60,13 +76,7 @@ export default function Problems({
     <div>
       {problems.map(problem => (
         <div key={problem.id}>
-          <div>ID: {problem.id}</div>
-          <div>Type: {problem.contestType}</div>
-          <div>Number: {problem.contestId}</div>
-          <div>Problem: {problem.level}</div>
-          <div>Difficulty: {problem.difficulty}</div>
-          <div>URL: {problem.url}</div>
-          <div>Tags: {problem.tags}</div>
+          <a href={problem.url} target="_blank" rel="noopener noreferrer">{problem.title} | Difficulty:{problem.difficulty} | Contest:{problem.contestId} | {problem.tags} </a>
         </div>
       ))}
     </div>
