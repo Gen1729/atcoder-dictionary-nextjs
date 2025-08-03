@@ -14,7 +14,7 @@ export async function GET(request: Request) {
   const tags = url.searchParams.getAll('tags');
 
   if(tags.length == 0){
-    const problems = await prisma.problem.findMany({
+    const problems = await prisma.Problem.findMany({
       where: {
         contestId: { gte: minContestId, lte: maxContestId },
         difficulty: { gte: minDiff, lte: maxDiff },
@@ -24,7 +24,7 @@ export async function GET(request: Request) {
 
     return NextResponse.json(problems);
   }else{
-    const problems = await prisma.problem.findMany({
+    const problems = await prisma.Problem.findMany({
       where: {
         contestId: { gte: minContestId, lte: maxContestId },
         difficulty: { gte: minDiff, lte: maxDiff },
