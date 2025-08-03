@@ -84,8 +84,8 @@ export default function Problems({
       {problems.map(problem => (
         <div key={problem.id} className="mb-[5px]">
           ・
-          <a href={problem.url} target="_blank" rel="noopener noreferrer" className={getDifficultyColor(problem.difficulty)}>
-            {problem.contestType}{problem.contestId} | {problem.title} | Difficulty:{problem.difficulty} | {problem.tags}
+          <a href={problem.url} target="_blank" rel="noopener noreferrer" >
+            {problem.contestType}{problem.contestId} | <span className={getDifficultyColor(problem.difficulty)} >{problem.title}</span> | <span className={getDifficultyColor(problem.difficulty)}>Difficulty : {problem.difficulty}</span> | <span className={getDifficultyColor(problem.difficulty)}>{problem.tags}</span>
           </a>
         </div>
       ))}
