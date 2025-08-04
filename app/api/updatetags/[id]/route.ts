@@ -4,7 +4,7 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-export async function POST(request: Request, { params }: { params: { id: string } }) {
+export async function POST(request: Request, { params }: { params: Promise<{ id: string }> }) {
   const url = new URL(request.url);
   const { id } = await params; // awaitを追加
   const Id = parseInt(id, 10); // stringをnumberに変換
