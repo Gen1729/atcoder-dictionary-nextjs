@@ -79,14 +79,27 @@ export default function Problems({
     return 'text-red-600';
   };
 
+  // グループ化
+  const grouped = problems.reduce((acc, problem) => {
+    const key = `${problem.contestType}${problem.contestId}`;
+    if (!acc[key]) acc[key] = [];
+    acc[key].push(problem);
+    return acc;
+  }, {} as Record<string, Problem[]>);
+
+  // 表示例
   return (
     <div>
-      {problems.map(problem => (
-        <div key={problem.id} className="mb-[5px]">
-          ・
-          <a href={problem.url} target="_blank" rel="noopener noreferrer" >
-            {problem.contestType}{problem.contestId} | <span className={getDifficultyColor(problem.difficulty)} >{problem.title}</span> | <span className={getDifficultyColor(problem.difficulty)}>Difficulty : {problem.difficulty}</span> | <span className={getDifficultyColor(problem.difficulty)}>{problem.tags}</span>
-          </a>
+      {Object.entries(grouped).map(([key, group]) => (
+        <div key={key} className="mb-4">
+          <div className="font-bold text-[30px]">{group[0].contestType}{group[0].contestId}</div>
+          {group.map(problem => (
+            <div key={problem.id} className="mb-[5px] text-[20px]">
+              <a href={problem.url} target="_blank" rel="noopener noreferrer" className="bg-white border-2 border-black p-[3px]">
+                <span className={getDifficultyColor(problem.difficulty)} >{problem.title}</span> | <span className={getDifficultyColor(problem.difficulty)}>Difficulty : {problem.difficulty}</span> | <span className={getDifficultyColor(problem.difficulty)}>{problem.tags}</span>
+              </a>
+            </div>
+          ))}
         </div>
       ))}
     </div>
