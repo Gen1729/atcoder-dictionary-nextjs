@@ -80,7 +80,8 @@ export default function Problems({
     if (difficulty < 2800) return 'text-orange-500';
     return 'text-red-600';
   };
-
+  // idで昇順に並び替え
+  problems.sort((a, b) => a.id - b.id);
   // グループ化
   const grouped = problems.reduce((acc, problem) => {
     const key = `${problem.contestType}${problem.contestId}`;
