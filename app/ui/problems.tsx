@@ -33,6 +33,14 @@ export default function Problems({
 }) {
   const [problems, setProblems] = useState<Problem[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+
+  const deleteThisTag = (id:number) => {
+    console.log(id)
+  }
+  const addNewTag = (id:number) => {
+    console.log(id)
+  }
+
   useEffect(() => {
     setLoading(true);
     let selectedLevels = Object.entries(problemLevels)
@@ -93,13 +101,20 @@ export default function Problems({
       {Object.entries(grouped).map(([key, group]) => (
         <div key={key} className="mb-4">
           <div className="font-bold text-[30px]">{group[0].contestType}{group[0].contestId}</div>
-          {group.map(problem => (
-            <div key={problem.id} className="mb-[5px] text-[20px]">
-              <a href={problem.url} target="_blank" rel="noopener noreferrer" className="bg-white border-2 border-black p-[3px]">
-                <span className={getDifficultyColor(problem.difficulty)} >{problem.title}</span> | <span className={getDifficultyColor(problem.difficulty)}>Difficulty : {problem.difficulty}</span> | <span className={getDifficultyColor(problem.difficulty)}>{problem.tags}</span>
-              </a>
-            </div>
-          ))}
+          {group.map(problem => {
+            const tagList = problem.tags ? problem.tags.split(',').map(tag => tag.trim()).filter(tag => tag.length > 0) : [];
+            return (
+              <div key={problem.id} className="mb-[5px] text-[20px] bg-white border-2 border-black p-[3px] w-max">
+                <a href={problem.url} target="_blank" rel="noopener noreferrer">
+                  <span className={getDifficultyColor(problem.difficulty)} >{problem.title}</span> | <span className={getDifficultyColor(problem.difficulty)}>Difficulty : {problem.difficulty}</span> | 
+                </a>
+                {tagList.map(tag => (
+                  <span key={tag} className="bg-fuchsia-200 border-1 border-black rounded-md px-[5px] mx-[2px]">{tag} <button onClick={() => deleteThisTag(problem.id)} className="text-red-900"> × </button></span>
+                ))}
+                <span className="mx-[5px]"><button onClick={() => addNewTag(problem.id)} className="text-black">+</button></span>
+              </div>
+            )
+          })}
         </div>
       ))}
     </div>
