@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Problems from './ui/problems';
+import allTags from '@/public/ tagCatalog';
 
 export default function Home() {
   // Difficultyのinput値
@@ -10,8 +11,12 @@ export default function Home() {
   const [minContestId, setMinContestId] = useState('300');
   const [maxContestId, setMaxContestId] = useState('417');
 
+  type Tags = {
+    [key: string]: boolean;
+  };
+
   // 問題ランクのチェックボックス状態
-  const [levels, setLevels] = useState({
+  const [levels, setLevels] = useState<Tags>({
     A: false,
     B: false,
     C: false,
@@ -22,7 +27,7 @@ export default function Home() {
   });
 
   // タグのチェックボックス状態
-  const [tags, setTags] = useState({
+  const [tags, setTags] = useState<Tags>({
     binarySearch: false,
     dp: false,
     DFS: false,
@@ -84,7 +89,7 @@ export default function Home() {
         <h1 className="text-[50px] leading-none p-5">Atcoder Dictionary</h1>
         <div className="p-5">
           <button
-            className="bg-blue-500 text-white px-4 py-2 rounded mb-4"
+            className="bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-white px-4 py-2 rounded mb-4 transition-colors duration-150 shadow-md"
             onClick={onSearch}
           >
             検索
@@ -160,34 +165,12 @@ export default function Home() {
             </label>
           </div>
           <div className="text-[20px] py-[20px]">
-            <label className="pr-[10px]">
-              <input type="checkbox" className="mr-2 scale-150" checked={tags.binarySearch} onChange={() => handleTagChange('binarySearch')} />
-              binary search
-            </label>
-            <label className="pr-[10px]">
-              <input type="checkbox" className="mr-2 scale-150" checked={tags.dp} onChange={() => handleTagChange('dp')} />
-              dp
-            </label>
-            <label className="pr-[10px]">
-              <input type="checkbox" className="mr-2 scale-150" checked={tags.DFS} onChange={() => handleTagChange('DFS')} />
-              DFS
-            </label>
-            <label className="pr-[10px]">
-              <input type="checkbox" className="mr-2 scale-150" checked={tags.BFS} onChange={() => handleTagChange('BFS')} />
-              BFS
-            </label>
-            <label className="pr-[10px]">
-              <input type="checkbox" className="mr-2 scale-150" checked={tags.Dijkstra} onChange={() => handleTagChange('Dijkstra')} />
-              Dijkstra
-            </label>
-            <label className="pr-[10px]">
-              <input type="checkbox" className="mr-2 scale-150" checked={tags.integer} onChange={() => handleTagChange('integer')} />
-              integer
-            </label>
-            <label className="pr-[10px]">
-              <input type="checkbox" className="mr-2 scale-150" checked={tags.bit2} onChange={() => handleTagChange('bit2')} />
-              bit2
-            </label>
+            {allTags.map((tag:string) => (
+              <label key={tag} className="pr-[10px]">
+                <input type="checkbox" className="mr-2 scale-150" checked={tags[tag]} onChange={() => handleTagChange(tag)} />
+                {tag}
+              </label>
+            ))}
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react';
 import { Loading } from './skeleton';
+import TagsUI from './tag';
 
 type Problem = {
   id: number;
@@ -33,14 +34,7 @@ export default function Problems({
 }) {
   const [problems, setProblems] = useState<Problem[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-
-  const deleteThisTag = (id:number) => {
-    console.log(id)
-  }
-  const addNewTag = (id:number) => {
-    console.log(id)
-  }
-
+  
   useEffect(() => {
     setLoading(true);
     let selectedLevels = Object.entries(problemLevels)
@@ -108,10 +102,7 @@ export default function Problems({
                 <a href={problem.url} target="_blank" rel="noopener noreferrer">
                   <span className={getDifficultyColor(problem.difficulty)} >{problem.title}</span> | <span className={getDifficultyColor(problem.difficulty)}>Difficulty : {problem.difficulty}</span> | 
                 </a>
-                {tagList.map(tag => (
-                  <span key={tag} className="bg-fuchsia-200 border-1 border-black rounded-md px-[5px] mx-[2px]">{tag} <button onClick={() => deleteThisTag(problem.id)} className="text-red-900"> × </button></span>
-                ))}
-                <span className="mx-[5px]"><button onClick={() => addNewTag(problem.id)} className="text-black">+</button></span>
+                <TagsUI id={problem.id} tags={tagList}/>
               </div>
             )
           })}
