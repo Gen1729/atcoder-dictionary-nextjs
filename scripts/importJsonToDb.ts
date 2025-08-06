@@ -17,6 +17,7 @@ async function main() {
         difficulty: item.difficulty,
         level: item.level,
         contestType: 'ABC',
+        comment: item.comment ?? '',
       },
     });
   }
