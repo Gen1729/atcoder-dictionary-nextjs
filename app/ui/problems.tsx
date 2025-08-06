@@ -12,6 +12,7 @@ type Problem = {
   difficulty: number;
   url: string;
   tags: string;
+  comment: string;
 };
 
 type Level = Record<string, boolean>;
@@ -24,6 +25,7 @@ export default function Problems({
   maxContestId,
   problemLevels,
   tags,
+  allTags
 }: {
   minDiff: number;
   maxDiff: number;
@@ -31,6 +33,7 @@ export default function Problems({
   maxContestId: number;
   problemLevels: Level;
   tags: Tag;
+  allTags: string[];
 }) {
   const [problems, setProblems] = useState<Problem[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -64,7 +67,7 @@ export default function Problems({
         setLoading(false);
       })
       .catch(() => setLoading(false));
-  }, [minDiff, maxDiff, minContestId, maxContestId, problemLevels, tags]);
+  }, [minDiff, maxDiff, minContestId, maxContestId, problemLevels, tags, allTags]);
 
   if (loading) {
     return <Loading />;
@@ -103,7 +106,7 @@ export default function Problems({
                 <a href={problem.url} target="_blank" rel="noopener noreferrer">
                   <span className={getDifficultyColor(problem.difficulty)} >{problem.title}</span> | <span className={getDifficultyColor(problem.difficulty)}>Difficulty : {problem.difficulty}</span> | 
                 </a>
-                <TagsUI id={problem.id} tags={tagList}/>
+                <TagsUI id={problem.id} tags={tagList} allTags={allTags} />
               </div>
             )
           })}

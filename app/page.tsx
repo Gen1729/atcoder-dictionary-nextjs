@@ -1,8 +1,7 @@
 'use client'
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Problems from './ui/problems';
-import allTags from '@/public/ tagCatalog';
 
 export default function Home() {
   // Difficultyのinput値
@@ -26,16 +25,8 @@ export default function Home() {
     G: false,
   });
 
-  // タグのチェックボックス状態
-  const [tags, setTags] = useState<Tags>({
-    binarySearch: false,
-    dp: false,
-    DFS: false,
-    BFS: false,
-    Dijkstra: false,
-    integer: false,
-    bit2: false,
-  });
+  const [tags, setTags] = useState<Tags>({});
+  const [allTagsState, setAllTagsState] = useState<string[]>([]);
 
   const [filter, setFilter] = useState({
     minDiff: 0,
@@ -71,6 +62,38 @@ export default function Home() {
   const handleTagChange = (tag: string) => {
     setTags({ ...tags, [tag]: !tags[tag as keyof typeof tags] });
   };
+
+  const makeNewTags = async (tagName: string) => {
+    if (!tagName || allTagsState.includes(tagName))return;
+    try {
+      await fetch('/api/tags', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name: tagName }),
+      });
+    } catch (error) {
+      console.error('タグの追加に失敗しました:', error);
+    }
+    setTags({ ...tags, [tagName]: false });
+    setAllTagsState([...allTagsState, tagName]);
+  }
+ 
+  useEffect(() => {
+    fetch('/api/tags')
+      .then(res => res.json())
+      .then((data: { id: string; name: string }[]) => {
+        const tagsObj: Tags = {};
+        const tagNames: string[] = [];
+        data.forEach(tag => {
+          tagsObj[tag.name] = false;
+          tagNames.push(tag.name);
+        });
+        setTags(tagsObj);
+        setAllTagsState(tagNames);
+      });
+  }, []);
 
   const onSearch = () => {
     setFilter({
@@ -164,14 +187,40 @@ export default function Home() {
               G
             </label>
           </div>
-          <div className="text-[20px] py-[20px]">
-            {allTags.map((tag:string) => (
-              <label key={tag} className="pr-[10px]">
+          <div className="text-[20px] py-[20px] flex flex-wrap gap-x-4 gap-y-2">
+            {Object.keys(tags).map((tag:string) => (
+              <label key={tag} className="flex items-center pr-[10px]">
                 <input type="checkbox" className="mr-2 scale-150" checked={tags[tag]} onChange={() => handleTagChange(tag)} />
-                {tag}
+                <span>{tag}</span>
               </label>
             ))}
           </div>
+            <div>
+              <form
+                action=""
+                onSubmit={(e) => {
+                e.preventDefault();
+                const form = e.target as HTMLFormElement;
+                const formData = new FormData(form);
+                const tagName = formData.get('tagName') as string;
+                makeNewTags(tagName);
+                form.reset();
+                }}
+              >
+                <input
+                type="text"
+                name="tagName"
+                placeholder="新しいタグ名を入力"
+                className="px-[2px] py-[10px] mx-[10px] h-[30px] w-[170px] bg-white border-2 rounded border-black-500"
+                />
+                <button
+                type="submit"
+                className="bg-green-500 hover:bg-green-600 active:bg-green-700 text-white px-4 py-2 rounded mb-4 transition-colors duration-150 shadow-md"
+                >
+                新規タグの作成
+                </button>
+              </form>
+            </div>
         </div>
       </div>
       <div className="flex-1 bg-green-100 font-bold pl-[20px] pt-[15px]">
@@ -182,6 +231,7 @@ export default function Home() {
           maxContestId={filter.maxContestId}
           problemLevels={filter.levels}
           tags={filter.tags}
+          allTags={allTagsState}
         />
       </div>
     </div>

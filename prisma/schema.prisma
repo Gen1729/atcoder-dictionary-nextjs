@@ -22,4 +22,10 @@ model Problem {
   difficulty    Int
   url           String   // 文字列
   tags          String   // 文字列（タグ列をカンマ区切り等で管理する場合）
+  comment       String   // 文字列（コメントを保存する場合）
+}
+
+model Tag {
+  id   Int    @id @default(autoincrement())
+  name String @unique
 }

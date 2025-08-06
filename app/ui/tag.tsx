@@ -1,13 +1,14 @@
 'use client'
-import allTags from '@/public/ tagCatalog';
 import { useEffect, useState } from 'react';
 
 export default function Tag({
   id,
-  tags
+  tags,
+  allTags
 }:{
   id:number;
   tags:string[];
+  allTags:string[];
 }){
   const [nowTagList, setNowTagList] = useState<string[]>([])
   const [showTagOptions, setShowTagOptions] = useState<boolean>(false);
