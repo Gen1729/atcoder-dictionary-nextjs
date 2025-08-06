@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { Loading } from './skeleton';
 import TagsUI from './tag';
+import CommentUI from './comment';
 
 type Problem = {
   id: number;
@@ -37,6 +38,9 @@ export default function Problems({
 }) {
   const [problems, setProblems] = useState<Problem[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const [editingCommentId, setEditingCommentId] = useState<number | null>(null);
+  const [editingCommentValue, setEditingCommentValue] = useState<string>('');
+  const [isEdittingComment, setIsEditingComment] = useState<boolean>(false);
   
   useEffect(() => {
     setLoading(true);
@@ -72,7 +76,7 @@ export default function Problems({
   if (loading) {
     return <Loading />;
   }
-  // difficulty値に応じて色を返す関数
+  
   const getDifficultyColor = (difficulty: number) => {
     if (difficulty < 400) return 'text-zinc-500';
     if (difficulty < 800) return 'text-yellow-800';
@@ -83,9 +87,9 @@ export default function Problems({
     if (difficulty < 2800) return 'text-orange-500';
     return 'text-red-600';
   };
-  // idで昇順に並び替え
+
   problems.sort((a, b) => a.id - b.id);
-  // グループ化
+
   const grouped = problems.reduce((acc, problem) => {
     const key = `${problem.contestType}${problem.contestId}`;
     if (!acc[key]) acc[key] = [];
@@ -93,7 +97,29 @@ export default function Problems({
     return acc;
   }, {} as Record<string, Problem[]>);
 
-  // 表示例
+
+  // コメント編集開始
+  const handleCommentClick = (problemId: number, currentComment: string) => {
+    if(isEdittingComment) return;
+    setIsEditingComment(true);
+    setEditingCommentId(problemId);
+    setEditingCommentValue(currentComment);
+  };
+
+  // コメント編集完了（Enter押下）
+  const handleCommentInputKeyDown = async (e: React.KeyboardEvent<HTMLInputElement>, problemId: number) => {
+    if (e.key === 'Enter') {
+      setProblems(prev => prev.map(p => p.id === problemId ? { ...p, comment: editingCommentValue } : p));
+      setEditingCommentId(null);
+      setIsEditingComment(false);
+      try {
+        await fetch(`/api/updatecomment/${problemId}`, { method: 'POST', body: JSON.stringify({ comment: editingCommentValue }) });
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  };
+
   return (
     <div>
       {Object.entries(grouped).map(([key, group]) => (
@@ -103,10 +129,33 @@ export default function Problems({
             const tagList = problem.tags ? problem.tags.split(',').map(tag => tag.trim()).filter(tag => tag.length > 0) : [];
             return (
               <div key={problem.id} className="mb-[5px] text-[20px] bg-white border-2 border-black p-[3px] w-max">
-                <a href={problem.url} target="_blank" rel="noopener noreferrer">
-                  <span className={getDifficultyColor(problem.difficulty)} >{problem.title}</span> | <span className={getDifficultyColor(problem.difficulty)}>Difficulty : {problem.difficulty}</span> | 
-                </a>
-                <TagsUI id={problem.id} tags={tagList} allTags={allTags} />
+                <div className="flex items-center gap-2 flex-wrap">
+                  <a href={problem.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                    <span className={getDifficultyColor(problem.difficulty)}>{problem.title}</span>
+                    <span className={getDifficultyColor(problem.difficulty)}>| Difficulty : {problem.difficulty}</span>
+                  </a>
+                  <TagsUI id={problem.id} tags={tagList} allTags={allTags} />
+                  <CommentUI onCommentClick={() => handleCommentClick(problem.id, problem.comment || '')} />
+                </div>
+                <div className="text-[20px] ml-[10px] mt-1">
+                  {editingCommentId === problem.id ? (
+                    <input
+                      type="text"
+                      className="border-2 rounded px-2 py-1 w-full"
+                      value={editingCommentValue}
+                      autoFocus
+                      onChange={e => setEditingCommentValue(e.target.value)}
+                      onKeyDown={e => handleCommentInputKeyDown(e, problem.id)}
+                      onBlur={() => setEditingCommentId(null)}
+                    />
+                  ) : (
+                    problem.comment && (
+                      <span className="text-[20px] ml-[10px]">
+                        {problem.comment}
+                      </span>
+                    )
+                  )}
+                </div>
               </div>
             )
           })}
