@@ -40,7 +40,6 @@ export default function Problems({
   const [loading, setLoading] = useState<boolean>(false);
   const [editingCommentId, setEditingCommentId] = useState<number | null>(null);
   const [editingCommentValue, setEditingCommentValue] = useState<string>('');
-  const [isEdittingComment, setIsEditingComment] = useState<boolean>(false);
   
   useEffect(() => {
     setLoading(true);
@@ -100,8 +99,6 @@ export default function Problems({
 
   // コメント編集開始
   const handleCommentClick = (problemId: number, currentComment: string) => {
-    if(isEdittingComment) return;
-    setIsEditingComment(true);
     setEditingCommentId(problemId);
     setEditingCommentValue(currentComment);
   };
@@ -111,7 +108,6 @@ export default function Problems({
     if (e.key === 'Enter') {
       setProblems(prev => prev.map(p => p.id === problemId ? { ...p, comment: editingCommentValue } : p));
       setEditingCommentId(null);
-      setIsEditingComment(false);
       try {
         await fetch(`/api/updatecomment/${problemId}`, { method: 'POST', body: JSON.stringify({ comment: editingCommentValue }) });
       } catch (error) {
