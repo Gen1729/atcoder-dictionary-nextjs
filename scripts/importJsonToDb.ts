@@ -12,12 +12,12 @@ async function main() {
       data: {
         title: item.title,
         url: item.url,
-        tags: item.tags,
+        tags: '',
         contestId: item.contestId,
         difficulty: item.difficulty,
         level: item.level,
         contestType: 'ABC',
-        comment: item.comment ?? '',
+        comment: '',
       },
     });
   }

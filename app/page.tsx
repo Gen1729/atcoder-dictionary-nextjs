@@ -108,7 +108,7 @@ export default function Home() {
 
   return (
     <div className="flex min-h-screen h-full">
-      <div className="w-[400px] bg-blue-200">
+      <div className="w-[500px] bg-blue-200">
         <h1 className="text-[50px] leading-none p-5">Atcoder Dictionary</h1>
         <div className="p-5">
           <button
@@ -221,6 +221,15 @@ export default function Home() {
                 </button>
               </form>
             </div>
+        </div>
+        <div className="p-[5px]">
+          <p>問題を解法で絞り込めるサイトです。</p>
+          <p>タグやコメントをつけて解法を共有しましょう。</p>
+          <p>荒らしは控え、節度を守って利用して下さい。</p>
+          <p className="pt-[10px] font-bold text-red-800">注意：</p>
+          <p>Atcoder Problemsが提供しているAPIからDifficultyを取得しており、そのデータ上でDifficultyが負の値になっている問題のDifficultyについては0としています。</p>
+          <p>また、Difficultyがない問題も一部あり、それらはDifficultyが-1になっています。</p>
+          <p>現在はABC300-417が利用できます。</p>
         </div>
       </div>
       <div className="flex-1 bg-green-100 font-bold pl-[20px] pt-[15px]">
