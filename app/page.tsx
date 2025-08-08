@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Problems from './ui/problems';
+import { error } from 'console';
 
 export default function Home() {
   // Difficultyのinput値
@@ -64,7 +65,7 @@ export default function Home() {
   };
 
   const makeNewTags = async (tagName: string) => {
-    if (!tagName || allTagsState.includes(tagName))return;
+    if (!tagName.trim() || allTagsState.includes(tagName))return;
     try {
       await fetch('/api/tags', {
         method: 'POST',
@@ -79,6 +80,46 @@ export default function Home() {
     setTags({ ...tags, [tagName]: false });
     setAllTagsState([...allTagsState, tagName]);
   }
+
+  const deleteTags = async () => {
+    const selectedTags = Object.keys(tags).filter(tag => tags[tag]);
+    if (selectedTags.length === 0) return;
+
+    const params = new URLSearchParams();
+    selectedTags.forEach(tag => params.append('tags', tag));
+
+    let isOK: boolean = true;
+
+    await fetch(`/api/problems/tagfind?${params.toString()}`)
+    .then(res => res.json())
+    .then(data => {
+      if (data.length > 0) {
+        alert('選択したタグが付いている問題が存在します。削除できません。');
+        isOK = false;
+      }
+    })
+    .catch(error => {console.error('タグの削除チェックに失敗しました:', error)});
+
+    if(!isOK) return;
+
+    try {
+      await fetch('/api/tags', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ tags: selectedTags }),
+      });
+      setTags(prev => {
+        const newTags = { ...prev };
+        selectedTags.forEach(tag => delete newTags[tag]);
+        return newTags;
+      });
+      setAllTagsState(allTagsState.filter(tag => !selectedTags.includes(tag)));
+    } catch (error) {
+      console.error('タグの削除に失敗しました:', error);
+    }
+  };
  
   useEffect(() => {
     fetch('/api/tags')
@@ -196,7 +237,7 @@ export default function Home() {
             ))}
           </div>
             <div>
-              <form
+              <form className="border-2 border-black-500 rounded p-[10px] w-full"
                 action=""
                 onSubmit={(e) => {
                 e.preventDefault();
@@ -207,19 +248,26 @@ export default function Home() {
                 form.reset();
                 }}
               >
-                <input
-                type="text"
-                name="tagName"
-                placeholder="新しいタグ名を入力"
-                className="px-[2px] py-[10px] mx-[10px] h-[30px] w-[170px] bg-white border-2 rounded border-black-500"
-                />
-                <button
-                type="submit"
-                className="bg-green-500 hover:bg-green-600 active:bg-green-700 text-white px-4 py-2 rounded mb-4 transition-colors duration-150 shadow-md"
-                >
-                新規タグの作成
-                </button>
+                <div className="flex gap-2 items-center w-full">
+                  <input
+                  type="text"
+                  name="tagName"
+                  placeholder="新しいタグ名を入力"
+                  className="flex-1 px-[5px] py-[6px] h-[40px] bg-white border-2 rounded border-black-500"
+                  />
+                  <button
+                  type="submit"
+                  className="bg-green-500 hover:bg-green-600 active:bg-green-700 text-white px-4 py-2 h-[40px] rounded transition-colors duration-150 shadow-md whitespace-nowrap"
+                  >
+                  新規タグの作成
+                  </button>
+                </div>
               </form>
+                <div className="flex justify-end">
+                  <button onClick={deleteTags} className="text-[15px] bg-red-500 hover:bg-red-600 active:bg-red-700 text-white px-4 py-2 rounded ml-[10px] my-[10px] transition-colors duration-150 shadow-md">
+                    チェックが付いているタグを削除
+                  </button>
+                </div>
             </div>
         </div>
         <div className="p-[5px]">

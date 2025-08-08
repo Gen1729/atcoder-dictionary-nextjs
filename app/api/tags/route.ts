@@ -1,4 +1,3 @@
-// app/api/problems/route.ts
 import { NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
 
@@ -21,4 +20,19 @@ export async function POST(request: Request) {
     },
   });
   return NextResponse.json(newTag);
+}
+
+export async function DELETE(request: Request) {
+  const { tags } = await request.json();
+  if (!Array.isArray(tags) || tags.length === 0) {
+    return NextResponse.json({ error: '削除するタグが指定されていません' }, { status: 400 });
+  }
+  const deletedTags = await prisma.tag.deleteMany({
+    where: {
+      name: {
+        in: tags,
+      },
+    },
+  });
+  return NextResponse.json(deletedTags);
 }
