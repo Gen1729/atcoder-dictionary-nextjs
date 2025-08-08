@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Problems from './ui/problems';
-import { error } from 'console';
+import { Loading } from './ui/skeleton';
 
 export default function Home() {
   // Difficultyのinput値
@@ -37,6 +37,8 @@ export default function Home() {
     levels: { ...levels },
     tags: { ...tags }
   });
+
+  const [loading, setLoading] = useState<boolean>(false);
 
   //難易度ハンドラ
   const handleMinDiffChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -122,6 +124,7 @@ export default function Home() {
   };
  
   useEffect(() => {
+    setLoading(true);
     fetch('/api/tags')
       .then(res => res.json())
       .then((data: { id: string; name: string }[]) => {
@@ -133,7 +136,9 @@ export default function Home() {
         });
         setTags(tagsObj);
         setAllTagsState(tagNames);
-      });
+        setLoading(false)
+      })
+      .catch(() => setLoading(false));
   }, []);
 
   const onSearch = () => {
@@ -229,7 +234,7 @@ export default function Home() {
             </label>
           </div>
           <div className="text-[20px] py-[20px] flex flex-wrap gap-x-4 gap-y-2">
-            {Object.keys(tags).map((tag:string) => (
+            {loading ? <Loading/> : Object.keys(tags).map((tag:string) => (
               <label key={tag} className="flex items-center pr-[10px]">
                 <input type="checkbox" className="mr-2 scale-150" checked={tags[tag]} onChange={() => handleTagChange(tag)} />
                 <span>{tag}</span>
