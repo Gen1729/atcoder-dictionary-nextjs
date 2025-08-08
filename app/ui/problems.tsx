@@ -104,17 +104,21 @@ export default function Problems({
   };
 
   // コメント編集完了（Enter押下）
-  const handleCommentInputKeyDown = async (e: React.KeyboardEvent<HTMLInputElement>, problemId: number) => {
+  const handleCommentInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, problemId: number) => {
     if (e.key === 'Enter') {
-      setProblems(prev => prev.map(p => p.id === problemId ? { ...p, comment: editingCommentValue } : p));
-      setEditingCommentId(null);
-      try {
-        await fetch(`/api/updatecomment/${problemId}`, { method: 'POST', body: JSON.stringify({ comment: editingCommentValue }) });
-      } catch (error) {
-        console.error(error);
-      }
+      saveComment(problemId);
     }
   };
+
+  const saveComment = async (problemId: number) => {
+    setProblems(prev => prev.map(p => p.id === problemId ? { ...p, comment: editingCommentValue } : p));
+    setEditingCommentId(null);
+    try {
+      await fetch(`/api/updatecomment/${problemId}`, { method: 'POST', body: JSON.stringify({ comment: editingCommentValue }) });
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   return (
     <div>
@@ -142,7 +146,7 @@ export default function Problems({
                       autoFocus
                       onChange={e => setEditingCommentValue(e.target.value)}
                       onKeyDown={e => handleCommentInputKeyDown(e, problem.id)}
-                      onBlur={() => setEditingCommentId(null)}
+                      onBlur={() => saveComment(problem.id)}
                     />
                   ) : (
                     problem.comment && (
